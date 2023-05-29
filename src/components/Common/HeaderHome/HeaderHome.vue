@@ -1,18 +1,23 @@
-<script setup lang="ts">
+<script>
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  name: 'HeaderHome'
+})
 </script>
 
 <template>
-  <div class="homePage">
-    <p class="homePage__title">COOK</p>
-    <p class="homePage__navigation">
-      <router-link to="/foo">Accueil</router-link>
-      <router-link to="/bar">Page Vierge</router-link>
-    </p>
-  </div>
+<div class="HeaderHome">
+  <p class="HeaderHome__title">COOK</p>
+  <p class="HeaderHome__navigation">
+    <router-link to="/foo">Accueil</router-link>
+    <router-link to="/bar">Page Vierge</router-link>
+  </p>
+</div>
 </template>
 
 <style lang="scss">
-.homePage {
+.HeaderHome {
   &__title {
     border-bottom: solid 1px black;
     display: flex;
@@ -22,7 +27,7 @@
     margin: auto;
     padding: 3rem;
     width: 70%;
-   }
+  }
 
   &__navigation {
     display: flex;
