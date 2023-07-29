@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import { defineComponent } from 'vue';
 import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
@@ -14,6 +14,7 @@ export default defineComponent({
     const slides = [
         'itep-eva.png', 'joe-longomo.png', 'skinny.png'
     ]
+    
     return {
       slides
     }
@@ -23,8 +24,9 @@ export default defineComponent({
 
 <template>
 <div class="HeaderHome">
-  <img src="/src/assets/itep_clan.png" alt="" class="HeaderHome__img">
+  <img src="https://i.imgur.com/H8SaztL.png" alt="" class="HeaderHome__img">
 
+  <video src="https://i.imgur.com/ZJnhE83.mp4"></video>
   <carousel :items-to-show="1.5">
     <slide v-for="slide in 3" :key="slide" :autoplay="2000"
            :wrap-around="true">
