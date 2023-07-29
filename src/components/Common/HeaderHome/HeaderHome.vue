@@ -2,9 +2,11 @@
 import { defineComponent } from 'vue';
 import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
+import BannerVideo from "@/components/HomeView/BannerVideo/BannerVideo.vue";
 export default defineComponent({
   name: 'HeaderHome',
   components: {
+    BannerVideo,
     Carousel,
     Slide,
     Pagination,
@@ -24,9 +26,7 @@ export default defineComponent({
 
 <template>
 <div class="HeaderHome">
-  <img src="https://i.imgur.com/H8SaztL.png" alt="" class="HeaderHome__img">
-
-  <video src="https://i.imgur.com/ZJnhE83.mp4"></video>
+  <BannerVideo />
   <carousel :items-to-show="1.5">
     <slide v-for="slide in 3" :key="slide" :autoplay="2000"
            :wrap-around="true">

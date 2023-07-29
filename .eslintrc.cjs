@@ -4,7 +4,6 @@ require('@rushstack/eslint-patch/modern-module-resolution')
 module.exports = {
   rules: {
     // Autres règles...
-    "max-len": ["error", { "code": 80 }],
     "quotes": ["error", "single"]
   },
   root: true,
