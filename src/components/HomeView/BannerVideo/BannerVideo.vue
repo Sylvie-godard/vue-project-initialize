@@ -1,56 +1,65 @@
 <script lang="ts">
-import {ref, defineComponent, onMounted} from 'vue';
+import { defineComponent, computed, ref } from 'vue';
+import BurgerMenu from '@/components/HomeView/BurgerMenu/BurgerMenu.vue';
+import HeaderHome from '@/components/HomeView/HeaderHome/HeaderHome.vue';
+import isMobile from '@/plugin/BrowserInfo';
+import { useBrowserInfo } from '@/plugin/useBrowserInfo';
 
 export default defineComponent({
-  name: 'BannerVideo',
-  setup() {
-    const videoRef = ref<HTMLElement | null>(null)
-
-    onMounted(() => {
-      resizeVideo()
-      window.addEventListener('resize', resizeVideo);
-    })
-
-    const resizeVideo = (): void => {
-      if (videoRef.value) {
-        const videoContainer = videoRef.value.parentElement;
-        const viewportHeight = window.innerHeight;
-        if (videoContainer) {
-          videoContainer.style.height = `${viewportHeight}px`;
+    name: 'BannerVideo',
+    computed: {
+        isMobile() {
+            return isMobile
         }
-      }
+    },
+    components: { BurgerMenu, HeaderHome },
+    setup() {
+        const isMobile = ref(useBrowserInfo())
+
+        const getIsMobile = computed(() => {
+            return isMobile.value;
+        })
+
+        return {
+            getIsMobile
+        }
     }
-  }
 })
 </script>
 
 <template>
-  <div class="video-banner">
-    <video
-        class="video-banner__video"
-        ref="video"
-        src="https://storage.googleapis.com/bucket-itep/itep_home_page_slider.mp4"
-        muted
-        loop
-        autoplay
-        playsinline
-    ></video>
-  </div>
+    <div class="BannerVideo">
+        <video
+            class="BannerVideo__video"
+            ref="video"
+            src="https://storage.googleapis.com/bucket-itep/itep_home_page_slider.mp4"
+            muted
+            loop
+            autoplay
+            playsinline
+        ></video>
+        <BurgerMenu v-if="getIsMobile" />
+        <HeaderHome v-else class="BannerVideo__HeaderHome"/>
+
+    </div>
 
 </template>
 
 <style lang="scss">
-.video-banner {
-    width: 100%;
+.BannerVideo {
     overflow: hidden;
-
-  &__video {
-    filter: grayscale(100%);
     width: 100%;
-    height: auto;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-  }
+
+    &__HeaderHome {
+        @media (max-width: 767px) {
+            display: none;
+        }
+    }
+
+    &__video {
+        filter: grayscale(100%);
+        height: auto;
+        width: 100%;
+    }
 }
 </style>
