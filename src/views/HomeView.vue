@@ -1,17 +1,18 @@
 <script lang="ts">
-import HeaderHome from '@/components/Common/HeaderHome/HeaderHome.vue';
 import { defineComponent } from 'vue'
+import BannerVideo from '@/components/HomeView/BannerVideo/BannerVideo.vue';
+
 export default defineComponent({
-  name: 'HomeView',
-  components: {
-    HeaderHome,
-  }
+    name: 'HomeView',
+    components: {
+        BannerVideo
+    }
 })
 
 </script>
 
 <template>
-  <div>
-    <HeaderHome />
-  </div>
+    <div>
+        <BannerVideo/>
+    </div>
 </template>
