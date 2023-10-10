@@ -4,7 +4,8 @@ require('@rushstack/eslint-patch/modern-module-resolution')
 module.exports = {
   rules: {
     // Autres règles...
-    "quotes": ["error", "single"]
+    "quotes": ["error", "single"],
+    "object-curly-spacing": ["error", "always"],
   },
   root: true,
   'extends': [
