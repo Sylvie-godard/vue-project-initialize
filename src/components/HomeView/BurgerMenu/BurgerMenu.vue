@@ -7,24 +7,27 @@ export default defineComponent({
     name: 'BurgerMenu',
     setup() {
         const burgerMenuRef = ref<HTMLElement | null>(null);
-        const isMobileTest = ref(useBrowserInfo());
+        const isMobileRef = ref(useBrowserInfo());
+        const isMenuOpen = ref(false);
 
-        const test = computed(() => {
-            return isMobileTest.value;
+        const isMobile = computed(() => {
+            return isMobileRef.value;
         });
         const handleBurgerClick = () => {
             if(!burgerMenuRef.value) {
                 return;
             }
 
+            isMenuOpen.value = !isMenuOpen.value;
             burgerMenuRef.value.classList.toggle('active');
         }
 
 
         return {
-            handleBurgerClick,
             burgerMenuRef,
-            test
+            handleBurgerClick,
+            isMenuOpen,
+            isMobile
         }
     }
 })
@@ -35,9 +38,14 @@ export default defineComponent({
         <div ref="burgerMenuRef" class="BurgerMenu__burger" @click="handleBurgerClick">
             <span></span>
         </div>
-        <div class="BurgerMenu__menu">
-
+        <Transition name="BurgerMenu__menu-transition">
+        <div v-if="isMenuOpen" class="BurgerMenu__menu">
+            <a href="">Accueil</a>
+            <a href="">Qui sommes nous</a>
+            <a href="">Planning</a>
+            <a href="">Nous contacter</a>
         </div>
+        </Transition>
     </div>
 </template>
 
@@ -50,6 +58,7 @@ export default defineComponent({
         position: absolute;
         top: 0;
         width: 32px;
+        z-index: 99;
 
         span {
             background-color: white;
@@ -85,7 +94,7 @@ export default defineComponent({
         span {
             background-color: transparent;
             &::before, &::after {
-                background-color: white;
+                background-color: black;
             }
 
             &::before {
@@ -99,14 +108,35 @@ export default defineComponent({
     }
 
     &__menu {
+        align-items: center;
         background-color: white;
-        height: 100vh;
-        left: 0;
-        position: fixed;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
         top: 0;
         transition: all 0.3s ease-in-out;
         width: 100vw;
         z-index: 1;
+
+        a {
+            border-top: solid 1px black;
+            color: black;
+            text-align: center;
+            text-decoration: none;
+            width: 100%;
+            padding: 15px 0;
+        }
+    }
+
+    &__volume-transition-enter-from,
+    &__menu-transition-enter-active,
+    &__volume-transition-leave-to {
+        transform: translateY(-100%);
+    }
+
+    &__menu-transition-leave-active {
+        opacity: 0;
+        transform: translateY(-100%);
     }
 }
 </style>
