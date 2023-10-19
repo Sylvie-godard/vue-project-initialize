@@ -1,9 +1,8 @@
 <script lang="ts">
 import { defineComponent, computed, ref } from 'vue';
-import BurgerMenu from '@/components/HomeView/BurgerMenu/BurgerMenu.vue';
-import HeaderHome from '@/components/HomeView/HeaderHome/HeaderHome.vue';
 import isMobile from '@/plugin/BrowserInfo';
 import { useBrowserInfo } from '@/plugin/useBrowserInfo';
+import MenuApp from '@/components/Common/MenuApp/MenuApp.vue';
 
 export default defineComponent({
     name: 'BannerVideo',
@@ -12,7 +11,7 @@ export default defineComponent({
             return isMobile
         }
     },
-    components: { BurgerMenu, HeaderHome },
+    components: { MenuApp },
     setup() {
         const isMobile = ref(useBrowserInfo())
 
@@ -37,19 +36,10 @@ export default defineComponent({
             loop
             autoplay
             playsinline
+            preload="metadata"
+            @contextmenu.prevent
         ></video>
-        <BurgerMenu v-if="getIsMobile" />
-        <HeaderHome v-else class="BannerVideo__HeaderHome"/>
-        <div class="BannerVideo__body">
-            <p>LES INSCRIPTIONS SONT OUVERTES!</p>
-            <p>ATELIER DE DÉVELOPPEMENT MENTAL ET PRATIQUE FREESTYLE HIP HOP</p>
-            <p>DEUX DIMANCHES PAR MOIS</p>
-            <p>CRÉNEAUX LIBRE EN SEMAINE</p>
-            <p>NIVEAU INTERMEDIAIRE/AVANCÉS</p>
-            <p>SERIEUX ET MOTIVÉ ONLY!</p>
-            <p>INTERESSÉ?</p>
-            <p>CONTACTEZ NOUS!</p>
-        </div>
+        <MenuApp />
     </div>
 
 </template>
@@ -58,25 +48,6 @@ export default defineComponent({
 .BannerVideo {
     overflow: hidden;
     width: 100%;
-
-    &__body {
-        align-items: center;
-        background: black;
-        color: white;
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-        margin: 2rem auto auto;
-        padding: 2rem;
-        text-align: center;
-        width: 50%;
-    }
-
-    &__HeaderHome {
-        @media (max-width: 767px) {
-            display: none;
-        }
-    }
 
     &__video {
         filter: grayscale(100%);
