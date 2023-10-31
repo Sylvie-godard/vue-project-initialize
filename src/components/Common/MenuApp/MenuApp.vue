@@ -1,6 +1,6 @@
 <script lang="ts">
 import BurgerMenu from '@/components/Common/MenuApp/BurgerMenu/BurgerMenu.vue';
-import { computed, defineComponent, ref } from 'vue/dist/vue';
+import { computed, defineComponent, ref } from 'vue';
 import { useBrowserInfo } from '@/plugin/useBrowserInfo';
 import isMobile from '@/plugin/BrowserInfo';
 import HeaderMenu from '@/components/Common/MenuApp/HeaderMenu/HeaderMenu.vue';
@@ -28,7 +28,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="Menu">
+    <div class="MenuApp">
         <BurgerMenu v-if="getIsMobile" />
         <HeaderMenu v-else/>
     </div>
