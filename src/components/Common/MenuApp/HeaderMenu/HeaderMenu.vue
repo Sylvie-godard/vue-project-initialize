@@ -1,7 +1,13 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
+import Logo from '@/assets/images/itep_clan-logo.png'
 export default defineComponent({
     name: 'HeaderMenu',
+    setup() {
+        return {
+            Logo
+        }
+    }
 })
 </script>
 
@@ -10,8 +16,10 @@ export default defineComponent({
         <nav class="HeaderMenu__nav">
             <router-link class="HeaderMenu__link" to="/">Accueil</router-link>
             <router-link class="HeaderMenu__link" to="/about">Qui sommes nous</router-link>
-            <img src="https://storage.googleapis.com/bucket-itep/itep_clan-logo.png" alt="Logo" class="HeaderMenu__logo" />
-            <router-link class="HeaderMenu__link" to="/planning">Planning</router-link>
+            <router-link class="HeaderMenu__link" to="/">
+                <img :src="Logo" alt="Logo" class="HeaderMenu__logo" />
+            </router-link>
+            <router-link class="HeaderMenu__link" to="/schedule-event">Planning</router-link>
             <router-link class="HeaderMenu__link" to="/contact">Nous contacter</router-link>
         </nav>
     </header>

@@ -3,7 +3,7 @@ import { defineComponent, computed, ref } from 'vue';
 import isMobile from '@/plugin/BrowserInfo';
 import { useBrowserInfo } from '@/plugin/useBrowserInfo';
 import MenuApp from '@/components/Common/MenuApp/MenuApp.vue';
-
+import bannerVideo from '@/assets/videos/itep_home_page_slider-2.mp4'
 export default defineComponent({
     name: 'BannerVideo',
     computed: {
@@ -20,6 +20,7 @@ export default defineComponent({
         })
 
         return {
+            bannerVideo,
             getIsMobile
         }
     }
@@ -31,7 +32,7 @@ export default defineComponent({
         <video
             class="BannerVideo__video"
             ref="video"
-            src="https://storage.googleapis.com/bucket-itep/itep_home_page_slider-2.mp4"
+            :src="bannerVideo"
             muted
             loop
             autoplay

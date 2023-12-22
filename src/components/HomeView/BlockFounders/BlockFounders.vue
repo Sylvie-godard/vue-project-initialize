@@ -1,7 +1,8 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import FounderBlock from '@/components/HomeView/FounderBlock/FounderBlock.vue';
-
+import Joe from '@/assets/images/Joe-1.png'
+import Skinny from '@/assets/images/Skinny-1.png'
 export default defineComponent({
     components: { FounderBlock },
     setup() {
@@ -9,13 +10,13 @@ export default defineComponent({
             {
                 className: '',
                 name: '4everLongomo',
-                src: 'https://storage.googleapis.com/bucket-itep/JoeLongomo.png',
+                src: Joe,
                 text: 'Caramels tootsie roll halvah pudding powder liquorice pastry powder tart. Bear claw caramels jujubes marzipan cheesecake sweet roll wafer toffee. Pudding cookie donut soufflé dessert jelly chupa chups.',
             },
             {
                 className: 'BlockFounders__gap-top',
                 name: 'Skinny',
-                src: 'https://storage.googleapis.com/bucket-itep/Skinny.png',
+                src: Skinny,
                 text: 'Caramels tootsie roll halvah pudding powder liquorice pastry powder tart. Bear claw caramels jujubes marzipan cheesecake sweet roll wafer toffee. Pudding cookie donut soufflé dessert jelly chupa chups.',
             },
         ];

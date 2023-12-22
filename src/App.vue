@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
 import BannerVideo from '@/components/HomeView/BannerVideo/BannerVideo.vue';
+import FooterApp from '@/components/Common/FooterApp/FooterApp.vue';
 </script>
 
 <template>
     <BannerVideo />
-  <RouterView />
+    <RouterView />
+    <FooterApp />
 </template>
 
 <style scoped>
