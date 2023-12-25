@@ -1,6 +1,7 @@
 <script lang="ts">
 import ButtonPrimary from '@/components/Common/Buttons/ButtonsPrimary/ButtonPrimary.vue';
-import { defineComponent } from 'vue';
+import { defineComponent, type PropType } from 'vue';
+import type { IFounder } from '@/components/HomeView/types/homeView-types';
 
 export default defineComponent({
     name: 'FounderBlock',
@@ -8,16 +9,8 @@ export default defineComponent({
         ButtonPrimary,
     },
     props: {
-        src: {
-            type: String,
-            required: true,
-        },
-        name: {
-            type: String,
-            required: true,
-        },
-        text: {
-            type: String,
+        founder: {
+            type: Object as PropType<IFounder>,
             required: true,
         },
     },
@@ -27,11 +20,19 @@ export default defineComponent({
 <template>
     <div class="FounderBlock">
         <div class="FounderBlock__photo">
-            <img :src="src" class="FounderBlock__image" :alt="src">
-            <h2 class="FounderBlock__title">{{ name }}</h2>
+            <video
+                muted
+                loop
+                autoplay
+                playsinline
+                preload="metadata"
+                :src="founder.src"
+                class="FounderBlock__image"
+            />
+            <h2 class="FounderBlock__title">{{ founder.name }}</h2>
 
             <p class="FounderBlock__text">
-                {{ text }}
+                {{ founder.text }}
             </p>
 
             <div class="FounderBlock__button">

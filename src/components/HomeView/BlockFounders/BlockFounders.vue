@@ -1,8 +1,8 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import FounderBlock from '@/components/HomeView/FounderBlock/FounderBlock.vue';
-import Joe from '@/assets/images/Joe-1.png'
-import Skinny from '@/assets/images/Skinny-1.png'
+import Joe from '@/assets/videos/joe.mp4'
+import Skinny from '@/assets/videos/skinny.mp4'
 export default defineComponent({
     components: { FounderBlock },
     setup() {
@@ -33,10 +33,7 @@ export default defineComponent({
         <FounderBlock
             v-for="founder in founders"
             :key="founder.name"
-            :class="founder.className"
-            :src="founder.src"
-            :name="founder.name"
-            :text="founder.text"
+            :founder="founder"
         />
     </div>
 </template>

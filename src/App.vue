@@ -6,11 +6,17 @@ import FooterApp from '@/components/Common/FooterApp/FooterApp.vue';
 
 <template>
     <BannerVideo />
-    <RouterView />
-    <FooterApp />
+    <div class="container">
+        <RouterView />
+        <FooterApp />
+    </div>
 </template>
 
 <style scoped>
+.container {
+    background-color: black;
+}
+
 header {
   line-height: 1.5;
   max-height: 100vh;

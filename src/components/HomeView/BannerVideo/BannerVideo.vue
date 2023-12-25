@@ -1,9 +1,9 @@
 <script lang="ts">
-import { defineComponent, computed, ref } from 'vue';
+import { defineComponent, computed, ref, onMounted, onUnmounted } from 'vue';
 import isMobile from '@/plugin/BrowserInfo';
 import { useBrowserInfo } from '@/plugin/useBrowserInfo';
 import MenuApp from '@/components/Common/MenuApp/MenuApp.vue';
-import bannerVideo from '@/assets/videos/itep_home_page_slider-2.mp4'
+import bannerVideo from '@/assets/videos/itep-banner.mp4'
 export default defineComponent({
     name: 'BannerVideo',
     computed: {
@@ -13,6 +13,8 @@ export default defineComponent({
     },
     components: { MenuApp },
     setup() {
+        const video = ref<HTMLVideoElement | null>(null);
+
         const isMobile = ref(useBrowserInfo())
 
         const getIsMobile = computed(() => {
@@ -21,7 +23,8 @@ export default defineComponent({
 
         return {
             bannerVideo,
-            getIsMobile
+            getIsMobile,
+            video
         }
     }
 })
@@ -38,8 +41,14 @@ export default defineComponent({
             autoplay
             playsinline
             preload="metadata"
-            @contextmenu.prevent
         ></video>
+        <div class="BannerVideo__content">
+            <div class="BannerVideo__hook">
+                <p>Ici tout est possible</p>
+                <p>Itep</p>
+                <div class="BannerVideo__line-itep"></div>
+            </div>
+        </div>
         <MenuApp />
     </div>
 
@@ -47,13 +56,48 @@ export default defineComponent({
 
 <style lang="scss">
 .BannerVideo {
+    height: 100vh;
     overflow: hidden;
     width: 100%;
 
+    @keyframes slideIn {
+        from {
+            margin-right: 100%;
+            width: 0;
+        }
+
+        to {
+            margin-left: 0;
+            width: 120%;
+        }
+    }
+
+    &__line-itep {
+        animation: 3s none alternate slideIn;
+        border-bottom: solid 2px white;
+        margin-top: 1rem;
+        width: 120%;
+    }
+
+    &__hook {
+        align-items: center;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        font-size: 30px;
+        position: absolute;
+        right: 40vw;
+        top: 50vh;
+    }
+
     &__video {
-        filter: grayscale(100%);
-        height: auto;
+        height: 100%;
+        left: 0;
+        object-fit: cover; /* Ajuste la vidéo pour remplir tout l'espace sans déformation */
+        position: fixed; /* Utilisation d'une position absolue pour remplir l'espace parent */
+        top: 0;
         width: 100%;
+        z-index: -1;
     }
 }
 </style>
