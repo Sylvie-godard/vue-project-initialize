@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
-import BannerVideo from '@/components/HomeView/BannerVideo/BannerVideo.vue';
 import FooterApp from '@/components/Common/FooterApp/FooterApp.vue';
 </script>
 
 <template>
-    <BannerVideo />
     <div class="container">
         <RouterView />
         <FooterApp />
@@ -44,12 +42,6 @@ nav a:first-of-type {
     display: flex;
     place-items: center;
     padding-right: calc(var(--section-gap) / 2);
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
   }
 
   nav {

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, computed, ref, onMounted, onUnmounted } from 'vue';
+import { defineComponent, computed, ref } from 'vue';
 import isMobile from '@/plugin/BrowserInfo';
 import { useBrowserInfo } from '@/plugin/useBrowserInfo';
 import MenuApp from '@/components/Common/MenuApp/MenuApp.vue';
@@ -42,13 +42,11 @@ export default defineComponent({
             playsinline
             preload="metadata"
         ></video>
-        <div class="BannerVideo__content">
             <div class="BannerVideo__hook">
                 <p>Ici tout est possible</p>
                 <p>Itep</p>
                 <div class="BannerVideo__line-itep"></div>
             </div>
-        </div>
         <MenuApp />
     </div>
 
@@ -92,12 +90,8 @@ export default defineComponent({
 
     &__video {
         height: 100%;
-        left: 0;
         object-fit: cover; /* Ajuste la vidéo pour remplir tout l'espace sans déformation */
-        position: fixed; /* Utilisation d'une position absolue pour remplir l'espace parent */
-        top: 0;
         width: 100%;
-        z-index: -1;
     }
 }
 </style>
