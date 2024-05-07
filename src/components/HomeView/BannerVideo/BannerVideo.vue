@@ -42,11 +42,6 @@ export default defineComponent({
             playsinline
             preload="metadata"
         ></video>
-            <div class="BannerVideo__hook">
-                <p>Ici tout est possible</p>
-                <p>Itep</p>
-                <div class="BannerVideo__line-itep"></div>
-            </div>
         <MenuApp />
     </div>
 
@@ -68,24 +63,6 @@ export default defineComponent({
             margin-left: 0;
             width: 120%;
         }
-    }
-
-    &__line-itep {
-        animation: 3s none alternate slideIn;
-        border-bottom: solid 2px white;
-        margin-top: 1rem;
-        width: 120%;
-    }
-
-    &__hook {
-        align-items: center;
-        color: white;
-        display: flex;
-        flex-direction: column;
-        font-size: 30px;
-        position: absolute;
-        right: 40vw;
-        top: 50vh;
     }
 
     &__video {
