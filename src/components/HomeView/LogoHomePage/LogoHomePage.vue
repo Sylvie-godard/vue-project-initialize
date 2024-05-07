@@ -14,11 +14,11 @@ export default defineComponent({
 
 <style scoped>
 .logo-homepage {
-    height: 400px;
-    width: 100%;
     display: flex;
-    padding-top: 30px;
-    padding-bottom: 30px;
+    height: 400px;
     justify-content: center;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    width: 100%;
 }
 </style>
