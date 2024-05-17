@@ -1,36 +1,16 @@
-<script lang="ts">
-import { computed, defineComponent, ref } from 'vue'
-import { useBrowserInfo } from '@/plugin/useBrowserInfo';
+<script lang="ts" setup>
+import { ref } from 'vue'
+const burgerMenuRef = ref<HTMLElement | null>(null);
+const isMenuOpen = ref(false);
 
-
-export default defineComponent({
-    name: 'BurgerMenu',
-    setup() {
-        const burgerMenuRef = ref<HTMLElement | null>(null);
-        const isMobileRef = ref(useBrowserInfo());
-        const isMenuOpen = ref(false);
-
-        const isMobile = computed(() => {
-            return isMobileRef.value;
-        });
-        const handleBurgerClick = () => {
-            if(!burgerMenuRef.value) {
-                return;
-            }
-
-            isMenuOpen.value = !isMenuOpen.value;
-            burgerMenuRef.value.classList.toggle('active');
-        }
-
-
-        return {
-            burgerMenuRef,
-            handleBurgerClick,
-            isMenuOpen,
-            isMobile
-        }
+const handleBurgerClick = () => {
+    if(!burgerMenuRef.value) {
+        return;
     }
-})
+
+    isMenuOpen.value = !isMenuOpen.value;
+    burgerMenuRef.value.classList.toggle('active');
+}
 </script>
 
 <template>

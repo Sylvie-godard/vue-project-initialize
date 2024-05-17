@@ -1,14 +1,5 @@
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
 import Logo from '@/assets/images/itep_clan-logo.png'
-export default defineComponent({
-    name: 'HeaderMenu',
-    setup() {
-        return {
-            Logo
-        }
-    }
-})
 </script>
 
 <template>
