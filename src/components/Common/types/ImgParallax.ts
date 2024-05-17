@@ -1,5 +1,5 @@
 interface ImgParallax {
     url: string;
-    width: number;
-    height: number;
+    width: string;
+    height: string;
 }
